@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: tracker-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/NomedXD/TelegramTrackerConfig.git
+          username: NomedXD
+          password: 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
+          default-label: main
+          search-paths: licensing-service,eureka-server,organization-service,gateway-server
+          skip-ssl-validation: true
+server:
+  port: 24100
