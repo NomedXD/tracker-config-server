@@ -7,9 +7,9 @@ spring:
         git:
           uri: https://github.com/NomedXD/TelegramTrackerConfig.git
           username: NomedXD
-          password: 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
+          password: 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
           default-label: main
-          search-paths: licensing-service,eureka-server,organization-service,gateway-server
+          search-paths: tracker-accountant-service,tracker-bot,tracker-eureka-server,tracker-gateway-server,tracker-notificator-service,tracker-sender-service,tracker-team-service
           skip-ssl-validation: true
 server:
   port: 24100
