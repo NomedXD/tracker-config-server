@@ -1,0 +1,23 @@
+### ACTUATOR ###
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+
+### EUREKA CLIENT ###
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+      
+### SERVER ###
+server:
+  port: 24140
+  servlet:
+    context-path: /api/notificator-service

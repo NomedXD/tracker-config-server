@@ -1,0 +1,31 @@
+spring:
+  cloud:
+### EUREKA ###
+    eureka:
+      instance:
+        hostname: localhost
+
+      ### EUREKA CLIENT ###
+      client:
+        fetch-registry: false
+        register-with-eureka: false
+        service-url:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+      ### EUREKA SERVER ###
+      server:
+        eviction-interval-timer-in-ms: 1000
+        wait-time-in-ms-when-sync-empty: 1000
+        enable-self-preservation: false
+
+### ACTUATOR ###
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+
+### SERVER ###
+server:
+  port: 8761

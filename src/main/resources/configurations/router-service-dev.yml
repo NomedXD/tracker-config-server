@@ -1,0 +1,45 @@
+spring:
+  cloud:
+### GATEWAY ###
+    gateway:
+      mvc:
+        discovery:
+          locator:
+            enabled: true
+
+        # routes:
+        #   - id: team-service
+        #     predicates:
+        #       - Path=/teams/**, /mentors/**, /students/**, /team-leaders/**, /users/**, /auth/**
+        #     uri: lb://team-service
+        #     filters:
+        #       - RewritePath=/(?<segment>.*), /api/team-service/${segment}
+
+        #   - id: accountant-service
+        #     predicates:
+        #       - Path=/tasks/**, /reports/**, /worklogs/**
+        #     uri: lb://accountant-service
+        #     filters:
+        #       - RewritePath=/(?<segment>.*), /api/accountant-service/${segment}
+
+### EUREKA CLIENT ###
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+
+### ACTUATOR ###
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+
+### SERVER ###
+server:
+  port: 5000

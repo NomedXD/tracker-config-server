@@ -1,0 +1,46 @@
+spring:
+### DATASOURCE ###
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/tracker_db?currentSchema=team_service}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+
+### JPA/HIBERNATE ###    
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql=true: true
+        highlight_sql: true
+
+### LIQUIBASE ###
+  liquibase:
+    change-log: db/changelog/changelog-master.xml
+
+### ACTUATOR ###
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+
+### EUREKA CLIENT ###
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+      
+### SERVER ###
+server:
+  port: 24120
+  servlet:
+    context-path: /api/team-service
+
+### APP VARIABLES ###
+jwt:
+  secret-key: 7F457EE443E8F72F73FF29789EAE712281726sgjhgasjdhgajsdgashgd

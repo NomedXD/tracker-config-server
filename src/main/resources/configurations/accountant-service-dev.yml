@@ -1,0 +1,53 @@
+spring:
+### DATASOURCE ###
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/tracker_db?currentSchema=accountant_service}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+
+### JPA/HIBERNATE ###    
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql=true: true
+        highlight_sql: true
+
+### LIQUIBASE ###
+  liquibase:
+    change-log: db/changelog/changelog-master.xml
+
+### ACTUATOR ###
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    enabled-by-default: true
+
+### EUREKA CLIENT ###
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+
+### SERVER ###
+server:
+  port: 24150
+  servlet:
+    context-path: /api/accountant-service
+
+
+### APP VARIABLES ###
+tracker:
+  application:
+    start-date: 10-05-2024
+  days-to-track: 3
+  
+  scheduler:
+      create-reports:
+        cron: 0 0 22 * * *
